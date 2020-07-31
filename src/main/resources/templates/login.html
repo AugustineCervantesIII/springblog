@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<!--add derective-->
+<html xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+</head>
+<body>
+<form action="/profile" method="post">
+<!--<form action="/login" method="post">-->
+    <label for="username">Username:</label>
+    <input type="text" name="username" id="username">
+
+    <label for="password">password</label>
+    <input type="text" name="password" id="password">
+
+    <button>Login</button>
+</form>
+
+<!--<p>Your username is: <span th:text="${username}"></span></p>-->
+<!--<p>Your password is: <span th:text="${password}"></span></p>-->
+
+</body>
+</html>

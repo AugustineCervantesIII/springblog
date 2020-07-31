@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<!--add derective-->
+<html xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<h1>This is the home page.</h1>
+
+<h3>Welcome <span th:text="${cohort}">test</span></h3>
+
+<h3>what cohort are you in?</h3>
+
+<form action="/" method="post">
+    <input type="text" name="cohort" id="cohort">
+    <button>submit</button>
+</form>
+
+</body>
+</html>
