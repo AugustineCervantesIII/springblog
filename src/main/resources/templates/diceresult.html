@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Results</title>
+</head>
+<!--navbar-->
+<nav th:replace="/partials/footer :: navbar"/>
+<body>
+
+<div th:if="${isTrue}">
+    <p> you guessed  <span th:text="${num}"></span> The number was <span th:text="${roll}"></span>, you guessed correctly!</p>
+</div>
+<div th:if="${!isTrue}">
+    <p> you guessed  <span th:text="${num}"></span> The number was <span th:text="${roll}"></span>, you guessed incorrectly!</p>
+
+</div>
+
+</body>
+<!--footer-->
+<footer th:replace="/partials/footer :: footer"/>
+</html>

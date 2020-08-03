@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+
+<html xmlns:th="http://www.thymeleaf.org">
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>DiceRoll</title>
+</head>
+<!--navbar-->
+<nav th:replace="/partials/footer :: navbar"/>
+<body>
+
+<h2>Guess a number.</h2>
+<ul>
+    <li><a href="/roll-dice/1">1</a></li>
+    <li><a href="/roll-dice/2">2</a></li>
+    <li><a href="/roll-dice/3">3</a></li>
+    <li><a href="/roll-dice/4">4</a></li>
+    <li><a href="/roll-dice/5">5</a></li>
+    <li><a href="/roll-dice/6">6</a></li>
+</ul>
+
+</body>
+<!--footer-->
+<footer th:replace="/partials/footer :: footer"/>
+</html>

@@ -20,21 +20,21 @@ public class MathController {
     @RequestMapping(path = "/subtract/{number}/and/{number2}", method = RequestMethod.GET)
     @ResponseBody
     public String subtract(@PathVariable int number, @PathVariable int number2) {
-        return number +" - "+ number2 +" = " + (number - number2) + ".";
+        return number + " - " + number2 + " = " + (number - number2) + ".";
     }
 
     //multiply
     @RequestMapping(path = "/multiply/{number}/and/{number2}", method = RequestMethod.GET)
     @ResponseBody
     public String multiply(@PathVariable int number, @PathVariable int number2) {
-        return number +" * "+ number2 +" = " + (number * number2) + ".";
+        return number + " * " + number2 + " = " + (number * number2) + ".";
     }
 
     //divide
     @RequestMapping(path = "/divide/{number}/and/{number2}", method = RequestMethod.GET)
     @ResponseBody
     public String divide(@PathVariable int number, @PathVariable int number2) {
-        return number +" / "+ number2 +" = " + (number / number2) + ".";
+        return number + " / " + number2 + " = " + (number / number2) + ".";
     }
 
 }
