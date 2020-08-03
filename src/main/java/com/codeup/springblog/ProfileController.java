@@ -15,4 +15,9 @@ public class ProfileController {
         return "profile";
     }
 
+    @GetMapping("/profile")
+    public String viewProfile(){
+        return "profile";
+    }
+
 }

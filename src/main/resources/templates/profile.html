@@ -8,10 +8,24 @@
     <meta charset="UTF-8">
     <title>profile</title>
 </head>
+
+<nav th:replace="/partials/partials :: navbar"/>
+
 <body>
 <h1>Your Profile</h1>
 <!--<h1>Hello, <span th:text="${user}"> World</span>!</h1>-->
+
 <p>Your username is: <span th:text="${username}"></span></p>
 <p>Your password is: <span th:text="${password}"></span></p>
+
+<div th:if="${isLoggedIn}">
+<ul th:each="ad : ${ads}">
+    <li th:text="${ad}"></li>
+</ul>
+</div>
+
 </body>
+
+<footer th:replace="/partials/partials :: footer"/>
+
 </html>
