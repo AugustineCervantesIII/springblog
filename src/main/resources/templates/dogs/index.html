@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>viewing all dogs</title>
+</head>
+<body>
+
+<div th:each="dogs : ${dogs}">
+    <p th:text="${dogs.age}"></p>
+    <p th:text="${dogs.name}"></p>
+    <p th:text="${dogs.resideState}"></p>
+</div>
+
+</body>
+</html>

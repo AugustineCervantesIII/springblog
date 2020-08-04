@@ -58,4 +58,14 @@ public class Dogs {
     }
 
 
+    @Override
+    public String toString(){
+        return "Dogs{" +
+                "age=" + age +
+                ", name='" + name + '\'' +
+                ", resideState='" + resideState + '\'' +
+                '}';
+    }
+
+
 }
