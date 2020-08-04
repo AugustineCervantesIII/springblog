@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <!--add derective-->
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
 <html lang="en">
 <head>
@@ -9,10 +9,18 @@
     <title>Navbar</title>
 </head>
 <body>
-
-<nav th:fragment="navbar">
-    <h1>this is your nav</h1>
+<nav th:fragment="navbar" class="nav navbar-light bg-light">
+    <ul>
+        <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
+        <li class="nav-item"><a class="nav-link" th:href="@{/posts}">Posts</a></li>
+        <li class="nav-item"><a class="nav-link" th:href="@{/roll-dice}">Roll the dice</a></li>
+    </ul>
 </nav>
+<!--<nav th:fragment="navbar" class="navbar"-->
+
+<!--<nav th:fragment="navbar">-->
+<!--    <h1>this is your nav</h1>-->
+<!--</nav>-->
 
 </body>
 </html>

@@ -1,10 +1,14 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org" lang="en">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>footer</title>
+    <title>viewing Post</title>
 </head>
 <body>
-<footer th:fragment="footer">live coded by sophie</footer>
+
+<h1 th:text="${title}"></h1>
+<h3 th:text="${body}"></h3>
+
 </body>
 </html>

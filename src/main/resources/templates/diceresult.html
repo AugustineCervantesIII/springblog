@@ -8,8 +8,15 @@
     <title>Results</title>
 </head>
 <!--navbar-->
-<nav th:replace="/partials/footer :: navbar"/>
+<nav th:replace="/partials/partials :: navbar"/>
 <body>
+<!--walkthrough code-->
+<!--<h1>You guessed: <span th:text="${num}"></span></h1>-->
+<!--<h1>The number was: <span th:text="${randomNum}"></span></h1>-->
+
+<!--<h3 th:text="${message}"></h3>-->
+
+<!--<a href="/roll-dice">Play again!</a>-->
 
 <div th:if="${isTrue}">
     <p> you guessed  <span th:text="${num}"></span> The number was <span th:text="${roll}"></span>, you guessed correctly!</p>
@@ -21,5 +28,5 @@
 
 </body>
 <!--footer-->
-<footer th:replace="/partials/footer :: footer"/>
+<footer th:replace="/partials/partials :: footer"/>
 </html>

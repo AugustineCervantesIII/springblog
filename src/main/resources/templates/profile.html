@@ -8,8 +8,8 @@
     <meta charset="UTF-8">
     <title>profile</title>
 </head>
-
-<nav th:replace="/partials/footer :: navbar"/>
+<!--this is from the partials folder containing the nav fragment-->
+<nav th:replace="/partials/partials :: navbar"/>
 
 <body>
 <h1>Your Profile</h1>
@@ -18,14 +18,17 @@
 <p>Your username is: <span th:text="${username}"></span></p>
 <p>Your password is: <span th:text="${password}"></span></p>
 
+<!--if statment to checked if user isloggedin from logincontroller-->
 <div th:if="${isLoggedIn}">
+
+<!--    for loop syntax to loop through ads in logincontroller-->
 <ul th:each="ad : ${ads}">
     <li th:text="${ad}"></li>
 </ul>
 </div>
 
 </body>
-
-<footer th:replace="/partials/footer :: footer"/>
+<!--this is the footer from the partials folder containig the footer fragment-->
+<footer th:replace="/partials/partials :: footer"/>
 
 </html>
