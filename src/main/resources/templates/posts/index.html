@@ -7,9 +7,10 @@
 </head>
 <body>
 
-<div th:each="post : ${posts}">
-    <h1 th:text="${post.title}"></h1>
-    <p th:text="${post.body}"></p>
+<div th:each="posts : ${posts}">
+<!--    posts grabs from the index method in the postcontroller in the add attribute-->
+    <h1 th:text="${posts.title}"></h1>
+    <p th:text="${posts.body}"></p>
 </div>
 
 </body>

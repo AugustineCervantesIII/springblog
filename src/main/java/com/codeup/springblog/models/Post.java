@@ -1,10 +1,20 @@
 package com.codeup.springblog.models;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "posts")//table name
 public class Post {
 
-    private String title;
-    private String body;
+    @Id //PRIMARY KEY annotation
+    @GeneratedValue(strategy = GenerationType.IDENTITY) //AUTO INCREMENT annotation
     private long id;
+
+    @Column(length = 100, nullable = false, unique = true)
+    private String title;
+
+    @Column(columnDefinition = "TEXT", nullable = false)
+    private String body;
 
     public Post(){
     }
@@ -13,6 +23,14 @@ public class Post {
         this.id = id;
         this.title = title;
         this.body = body;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public long getId() {
+        return id;
     }
 
     public String getTitle(){

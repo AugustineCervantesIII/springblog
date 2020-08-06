@@ -6,9 +6,14 @@
     <title>viewing Post</title>
 </head>
 <body>
+<h1 th:text="${post.title}"></h1>
+<h3 th:text="${post.body}"></h3>
 
-<h1 th:text="${title}"></h1>
-<h3 th:text="${body}"></h3>
+<a th:href="@{'/posts/' + ${post.id} + '/edit'}">Edit Post</a>
+
+    <form th:action="@{'/posts/' + ${post.id} + '/delete'}" th:method="POST">
+        <button>Delete Post</button>
+    </form>
 
 </body>
 </html>
