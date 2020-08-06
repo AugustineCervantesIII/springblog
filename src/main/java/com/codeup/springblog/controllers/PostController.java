@@ -4,10 +4,7 @@ import com.codeup.springblog.models.Post;
 import com.codeup.springblog.repositories.PostRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -80,12 +77,17 @@ public class PostController {
     }
 
     @PostMapping("/posts/{id}/edit")
-    public String update(@PathVariable long id, @PathVariable String title, @PathVariable String body){
+    public String update(@PathVariable long id, @RequestParam String title, @RequestParam String body) {
+        // update our database with the latest title and body form the edit form
+        // get the post from the db to edit
         Post postToEdit = postsDao.getOne(id);
+        // set the postToEdit title and body with values/parameters from the request
         postToEdit.setTitle(title);
         postToEdit.setBody(body);
+        // save the changes in the database
         postsDao.save(postToEdit);
-        return "redirect:/posts" + id;
+        // redirect show page for the given post
+        return "redirect:/posts/" + id;
     }
 
     @PostMapping("/posts/{id}/delete")
