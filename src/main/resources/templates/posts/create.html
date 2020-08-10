@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>create post</title>
+</head>
+<body>
+<h1>Create a post</h1>
+<!--old way code-->
+<!--<form th:action="@{'/posts/create'}" th:method="POST">-->
+<!--    <div>-->
+<!--        <label for="title">title</label>-->
+<!--        <input type="text" name="title" id="title">-->
+<!--    </div>-->
+
+<!--    <div>-->
+<!--        <label for="body">body</label>-->
+<!--        <textarea name="body" id="body"></textarea>-->
+<!--    </div>-->
+
+<!--    <button>create post</button>-->
+<!--</form>-->
+
+<form th:action="@{/posts/create}" th:method="post" th:object="${post}">
+    Title:
+    <input th:field="*{title}" />
+    <br />
+    Body:
+    <input th:field="*{body}" />
+    <br />
+    <input type="submit" />
+</form>
+
+</body>
+</html>

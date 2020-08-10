@@ -1,6 +1,8 @@
 package com.codeup.springblog.models;
 
 import javax.persistence.*;
+import javax.xml.stream.events.Comment;
+import java.util.List;
 
 @Entity
 @Table(name = "posts")//table name
@@ -16,13 +18,25 @@ public class Post {
     @Column(columnDefinition = "TEXT", nullable = false)
     private String body;
 
+    @ManyToOne
+    //foreign key
+    @JoinColumn(name = "aurthor_id")
+    private User author;
+
+
     public Post(){
     }
 
-    public Post(long id, String title, String body){
+    public Post(long id, String title, String body) {
         this.id = id;
         this.title = title;
         this.body = body;
+    }
+
+    public Post(String title, String body, User author) {
+        this.title = title;
+        this.body = body;
+        this.author = author;
     }
 
     public void setId(long id) {
@@ -49,4 +63,11 @@ public class Post {
         this.body = newBody;
     }
 
+    public User getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(User author) {
+        this.author = author;
+    }
 }

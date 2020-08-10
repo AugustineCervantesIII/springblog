@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 
 <!--add derective-->
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
 
-<html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>Home</title>
@@ -12,12 +11,12 @@
 
 <h1>This is the home page.</h1>
 
-<h3>Welcome <span th:text="${cohort}">test</span></h3>
+<h3>Welcome <span th:text="${name}">test</span></h3>
 
-<h3>what cohort are you in?</h3>
+<h3>What is your name?</h3>
 
 <form action="/" method="post">
-    <input type="text" name="cohort" id="cohort">
+    <input type="text" name="name" id="name">
     <button>submit</button>
 </form>
 

@@ -1,22 +1,32 @@
 package com.codeup.springblog.controllers;
 
 import com.codeup.springblog.models.Post;
+import com.codeup.springblog.models.User;
 import com.codeup.springblog.repositories.PostRepository;
+import com.codeup.springblog.repositories.UserRepository;
+import com.codeup.springblog.services.EmailService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
-import java.util.List;
+//import java.util.ArrayList;
+//import java.util.List;
 
 @Controller
 public class PostController {
 
     //dependency injection
     private final PostRepository postsDao;
+    private final UserRepository usersDao;
+    private final EmailService emailService;
+    private final PostRepository postDao;
 
-    public PostController(PostRepository postsDao){
+    public PostController(PostRepository postsDao, UserRepository usersDao, EmailService emailService, PostRepository postDao){
         this.postsDao = postsDao;
+        this.usersDao = usersDao;
+        this.emailService = emailService;
+        this.postDao = postsDao;
+
     }
 
 //    @GetMapping("/posts")
@@ -25,6 +35,12 @@ public class PostController {
 //        return "here are all the posts";
 //    }
 
+
+    @GetMapping("/email")
+    public String sendEmail(){
+        emailService.prepareAndSend(postDao.getOne(1L), "First email.", "This is a test");
+        return "Check your Mailtrap inbox";
+    }
 
     @GetMapping("/posts")
     public String index(Model model) {
@@ -56,39 +72,74 @@ public class PostController {
         return "posts/show";
     }
 
+//    old form code version
+//    @GetMapping("/posts/create")
+//    public String create(){
+//        return "posts/create";
+//    }
+//
+//    @PostMapping("/posts/create")
+////    @ResponseBody
+//    public String insert(@RequestParam String title, @RequestParam String body){
+//        User user = usersDao.getOne(1L);
+//        Post post = new Post(title, body, user);
+//        postsDao.save(post);
+//        return "redirect:/posts";
+//    }
+
+
     @GetMapping("/posts/create")
-    @ResponseBody
-    public String create(){
-        return "here is the form to create a post";
+    public String create(@PathVariable long id, Model model){
+        model.addAttribute("post", new Post());
+        return "posts/create";
     }
 
     @PostMapping("/posts/create")
-    @ResponseBody
-    public String insert(){
-        return "post has been created";
+    public String insert(@ModelAttribute Post post){
+        User user = usersDao.getOne(1L);
+        post.setAuthor(user);
+        postsDao.save(post);
+        return "redirect:/posts";
     }
 
-
-    //a view to edit the post
-    @GetMapping("/posts/{id}/edit")
+// new form method
+        @GetMapping("/posts/{id}/edit")
     public String editForm(@PathVariable long id, Model model){
         model.addAttribute("post", postsDao.getOne(id));
         return "posts/edit";
     }
 
     @PostMapping("/posts/{id}/edit")
-    public String update(@PathVariable long id, @RequestParam String title, @RequestParam String body) {
-        // update our database with the latest title and body form the edit form
-        // get the post from the db to edit
-        Post postToEdit = postsDao.getOne(id);
-        // set the postToEdit title and body with values/parameters from the request
-        postToEdit.setTitle(title);
-        postToEdit.setBody(body);
-        // save the changes in the database
-        postsDao.save(postToEdit);
-        // redirect show page for the given post
-        return "redirect:/posts/" + id;
+    public String update(@PathVariable long id, @ModelAttribute Post post) {
+        User user = usersDao.getOne(1L);
+        post.setAuthor(user);
+        postsDao.save(post);
+        return "redirect:/posts/";
     }
+
+
+
+    //a view to edit the post
+    //old code form
+//    @GetMapping("/posts/{id}/edit")
+//    public String editForm(@PathVariable long id, Model model){
+//        model.addAttribute("post", postsDao.getOne(id));
+//        return "posts/edit";
+//    }
+//
+//    @PostMapping("/posts/{id}/edit")
+//    public String update(@PathVariable long id, @RequestParam String title, @RequestParam String body) {
+//        // update our database with the latest title and body form the edit form
+//        // get the post from the db to edit
+//        Post postToEdit = postsDao.getOne(id);
+//        // set the postToEdit title and body with values/parameters from the request
+//        postToEdit.setTitle(title);
+//        postToEdit.setBody(body);
+//        // save the changes in the database
+//        postsDao.save(postToEdit);
+//        // redirect show page for the given post
+//        return "redirect:/posts/" + id;
+//    }
 
     @PostMapping("/posts/{id}/delete")
     public String deletePost(@PathVariable long id){

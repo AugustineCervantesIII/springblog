@@ -14,14 +14,14 @@ public class HomeController {
 //    }
 
     @GetMapping("/")
-// responsebody removed to connect a controller to a view on home.html file
+// @ResponseBody removed to connect a controller to a view on home.html file
     public String page(){
         return "home";
     }
 
     @PostMapping("/")
-    public String returnCohort(@RequestParam(name = "cohort") String cohort, Model model){
-        model.addAttribute("cohort", cohort);
+    public String returnName(@RequestParam(name = "name") String name, Model model){
+        model.addAttribute("name", name);
         return "home";
     }
 

@@ -6,11 +6,16 @@
     <title>viewing all Posts</title>
 </head>
 <body>
+<h1>Here are all the posts</h1>
+
+<a href="/posts/create">create a post</a>
 
 <div th:each="posts : ${posts}">
 <!--    posts grabs from the index method in the postcontroller in the add attribute-->
     <h1 th:text="${posts.title}"></h1>
     <p th:text="${posts.body}"></p>
+<!--    <p th:text="${posts.author.email}"></p>-->
+    <a th:href="@{/posts/{id}(id=${posts.id})}">view</a>
 </div>
 
 </body>
