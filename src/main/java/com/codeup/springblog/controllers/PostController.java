@@ -19,13 +19,13 @@ public class PostController {
     private final PostRepository postsDao;
     private final UserRepository usersDao;
     private final EmailService emailService;
-    private final PostRepository postDao;
+//    private final PostRepository postDao;
 
-    public PostController(PostRepository postsDao, UserRepository usersDao, EmailService emailService, PostRepository postDao){
+    public PostController(PostRepository postsDao, UserRepository usersDao, EmailService emailService){
         this.postsDao = postsDao;
         this.usersDao = usersDao;
         this.emailService = emailService;
-        this.postDao = postsDao;
+//        this.postDao = postDao;
 
     }
 
@@ -38,7 +38,7 @@ public class PostController {
 
     @GetMapping("/email")
     public String sendEmail(){
-        emailService.prepareAndSend(postDao.getOne(1L), "First email.", "This is a test");
+        emailService.prepareAndSend(postsDao.getOne(1L), "First email.", "This is a test");
         return "Check your Mailtrap inbox";
     }
 
@@ -89,7 +89,7 @@ public class PostController {
 
 
     @GetMapping("/posts/create")
-    public String create(@PathVariable long id, Model model){
+    public String create(Model model){
         model.addAttribute("post", new Post());
         return "posts/create";
     }
