@@ -100,8 +100,9 @@ public class PostController {
 
     @PostMapping("/posts/create")
     public String insert(@ModelAttribute Post post){
-        User user = usersDao.getOne(1L);
-        post.setAuthor(user);
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = usersDao.getOne(1L);
+        post.setAuthor(loggedInUser);
         postsDao.save(post);
         return "redirect:/posts";
     }
@@ -115,8 +116,9 @@ public class PostController {
 
     @PostMapping("/posts/{id}/edit")
     public String update(@PathVariable long id, @ModelAttribute Post post) {
-        User user = usersDao.getOne(1L);
-        post.setAuthor(user);
+        User loggedInUser = (User) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+//        User user = usersDao.getOne(1L);
+        post.setAuthor(loggedInUser);
         postsDao.save(post);
         return "redirect:/posts/";
     }
