@@ -3,6 +3,15 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+<nav>
+    <ul>
+        <li>
+            <form th:action="@{/logout}" th:method="post">
+                <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+            </form>
+        </li>
+    </ul>
+</nav>
     <title>viewing all Posts</title>
 </head>
 <body>
@@ -11,10 +20,10 @@
 <a href="/posts/create">create a post</a>
 
 <div th:each="posts : ${posts}">
-<!--    posts grabs from the index method in the postcontroller in the add attribute-->
+    <!--    posts grabs from the index method in the postcontroller in the add attribute-->
     <h1 th:text="${posts.title}"></h1>
     <p th:text="${posts.body}"></p>
-<!--    <p th:text="${posts.author.email}"></p>-->
+        <p th:text="${posts.author.email}"></p>
     <a th:href="@{/posts/{id}(id=${posts.id})}">view</a>
 </div>
 

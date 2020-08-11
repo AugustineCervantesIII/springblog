@@ -14,6 +14,11 @@
         <li class="nav-item"><a class="nav-link" th:href="@{/}">Home</a></li>
         <li class="nav-item"><a class="nav-link" th:href="@{/posts}">Posts</a></li>
         <li class="nav-item"><a class="nav-link" th:href="@{/roll-dice}">Roll the dice</a></li>
+        <li>
+            <form th:action="@{/logout}" th:method="post">
+                <button class="btn-link btn" style="margin-top: 8px">Logout</button>
+            </form>
+        </li>
     </ul>
 </nav>
 <!--<nav th:fragment="navbar" class="navbar"-->
